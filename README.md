@@ -79,4 +79,6 @@ pnpm build
 
 ## Live Demo
 
-A live version of the application will be available here after deployment.
+## Live Demo
+
+[View the live application](https://Illy-2024.github.io/react-todo-app/)
