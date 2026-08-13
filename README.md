@@ -46,7 +46,7 @@ This project helped me practice:
 Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Illy-2024/react-todo-app.git
 ```
 
 Navigate to the project directory:
