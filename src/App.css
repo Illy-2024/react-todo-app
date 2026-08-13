@@ -1,0 +1,438 @@
+* {
+  transition: all 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.app {
+  width: 420px;
+  padding: 55px 60px;
+  border-radius: 34px;
+
+  background: rgba(59, 87, 150, 0.35);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(147, 197, 253, 0.25);
+   box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18);
+}
+
+/* Dark glass */
+.page.dark .app {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Light glass */
+.page.light .app {
+
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(219, 234, 254, 0.92),
+    rgba(191, 219, 254, 0.82)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  box-shadow:
+    0 35px 80px rgba(30, 64, 175, 0.35),
+    0 15px 35px rgba(59, 130, 246, 0.22),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
+
+.page.light .app::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  top: -60px;
+  right: -60px;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.28), transparent 70%);
+  border-radius: 50%;
+}
+
+.page.light .app::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  bottom: -60px;
+  left: -60px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.22), transparent 70%);
+  border-radius: 50%;
+}
+
+
+/* Dark Mode*/
+.page.dark {
+  background: radial-gradient(circle at top, #1e3a8a, #07111f 70%);
+  color: white;
+}
+
+/* LIGHT MODE */
+.page.light {
+  position: relative;
+  overflow-x: hidden;
+
+  background: radial-gradient(
+    circle at top, 
+     #93c5fd 0%,
+    #7dd3fc 25%,
+    #60a5fa 55%,
+    #3b82f6 100%
+  );
+
+  color: #0f172a;
+}
+
+.page.light::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: -200px;
+  right: -150px;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.35),
+    transparent 70%
+  );
+
+  border-radius: 50%;
+}
+
+.page.light::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  bottom: -180px;
+  left: -120px;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.22),
+    transparent 70%
+  );
+
+  border-radius: 50%;
+}
+
+.todo-form {
+  display: flex;
+  gap: 15px;
+  margin: 24px 0 24px;
+}
+
+input {
+  flex: 1;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  font-size: 15px;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.page.dark input {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.page.dark input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.page.light input {
+  background: rgba(255, 255, 255, 0.8);
+  color: #111;
+}
+
+button {
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  color: white;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.todo-item {
+  margin-bottom: 12px;
+}
+
+.todo-item-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 12px;
+  border-radius: 14px;
+}
+
+.todo-item-content span {
+  flex: 1;
+  word-break: break-word;
+  min-width: 0;
+}
+
+.page.dark .todo-item-content {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.page.light .todo-item-content {
+   background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.08);
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.filter-buttons button {
+  padding: 10px 14px;
+  font-size: 14px;
+  opacity: 0.55;
+}
+
+.filter-buttons button.active {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+/* Dark mode */
+.page.dark .filter-buttons button.active {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+/* Light mode */
+.page.light .filter-buttons button.active {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+}
+
+.todo-item-content:hover {
+  transform: translateY(-2px);
+}
+
+.todo-item-content button {
+  font-size: 13px;
+  padding: 8px 10px;
+}
+
+.app-title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.app-subtitle {
+  text-align: center;
+  font-size: 18px;
+  margin: 14px 0 34px;
+  opacity: 0.85;
+}
+
+
+.page.light .app-subtitle {
+  color: #475569;
+}
+
+/* Optional glow in dark mode */
+.page.dark .app-title {
+  color: #e0f2fe;
+}
+
+/* Light mode */
+.page.light .app-title {
+  color: #0f172a;
+}
+
+.theme-toggle {
+  display: block;
+  margin: 0 auto 20px auto;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+/* Dark mode button */
+.page.dark .theme-toggle {
+  background: rgba(255, 255, 255, 0.16);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Light mode button */
+.page.light .theme-toggle {
+  background: rgba(15, 23, 42, 0.08);
+  color: #0f172a;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+button .MuiSvgIcon-root {
+  font-size: 15px;
+}
+
+.task-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 18px 0 28px;
+  font-size: 14px;
+}
+
+.task-counter span {
+  padding: 10px 20px;
+  border-radius: 999px;
+
+  text-align: center;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.page.dark .task-counter span {
+  background: rgba(255, 255, 255, 0.12);
+  color: #e0f2fe;
+}
+
+.page.light .task-counter span {
+  background: rgba(255, 255, 255, 0.65);
+  color: #1e3a8a;
+}
+
+.empty-state {
+  text-align: center;
+  margin: 20px 0;
+  padding: 18px;
+  border-radius: 14px;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.page.dark .empty-state {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e0f2fe;
+}
+
+.page.light .empty-state {
+  background: rgba(255, 255, 255, 0.65);
+  color: #475569;
+}
+
+
+@media (max-width: 600px) {
+  .app {
+    width: 85%;
+    padding: 35px 22px;
+    border-radius: 26px;
+  }
+
+  .app-title {
+    font-size: 32px;
+  }
+
+  .app-subtitle {
+    font-size: 15px;
+  }
+
+  .task-counter {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .task-counter span {
+    margin-right: 0;
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+
+  .todo-form {
+    gap: 10px;
+  }
+
+  .todo-form input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .todo-form button {
+    padding: 12px 14px;
+  }
+
+  .todo-item-content {
+    padding: 12px;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .todo-item-content span {
+    font-size: 14px;
+  }
+
+  .todo-item-content button {
+    padding: 8px;
+  }
+
+  .filter-buttons {
+    flex-wrap: wrap;
+  }
+
+  .task-counter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.task-counter span {
+  margin-right: 0;
+}
+}
